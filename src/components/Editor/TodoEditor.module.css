@@ -1,0 +1,256 @@
+.todoEditor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  margin-bottom: 16px;
+}
+
+.titleInput {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.titleInput::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.createdTime {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.createdTime svg {
+  opacity: 0.6;
+}
+
+.addForm {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.addInput {
+  flex: 1;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.addInput:focus {
+  border-color: var(--accent);
+  background: var(--bg-paper);
+}
+
+.addInput::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.addBtn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.addBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.todoList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-secondary);
+}
+
+.emptyHint {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin-top: 8px;
+}
+
+.progress {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.todoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-sidebar);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  animation: fadeInUp 200ms ease-out forwards;
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+
+.todoItem:hover {
+  background: var(--highlight);
+}
+
+.todoItem.completed {
+  opacity: 0.6;
+}
+
+.todoItem.completed .todoText {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  background: var(--bg-paper);
+}
+
+.checkbox input:checked + .checkmark {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkmark svg {
+  width: 14px;
+  height: 14px;
+  color: white;
+}
+
+.todoContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.todoText {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.todoCreated {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.deleteBtn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+
+.todoItem:hover .deleteBtn {
+  opacity: 1;
+}
+
+.deleteBtn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .titleInput {
+    font-size: 1.5rem;
+  }
+
+  .addForm {
+    flex-direction: column;
+  }
+
+  .addBtn {
+    justify-content: center;
+  }
+}

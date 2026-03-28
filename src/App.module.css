@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .main {
+    position: relative;
+  }
+}

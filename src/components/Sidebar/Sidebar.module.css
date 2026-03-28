@@ -1,0 +1,399 @@
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: width var(--transition-slow);
+}
+
+.sidebar.collapsed {
+  width: 48px;
+}
+
+.sidebarHeader {
+  padding: 16px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar.collapsed .sidebarHeader {
+  padding: 16px 8px;
+  justify-content: center;
+}
+
+.tabButtons {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tabBtn:hover {
+  background: var(--bg-paper);
+  color: var(--text-primary);
+}
+
+.tabBtn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.tabBtn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.tabCount {
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 0.65rem;
+}
+
+.tabBtn:not(.active) .tabCount {
+  background: var(--bg-paper);
+}
+
+.sidebarToggle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.sidebarToggle:hover {
+  background: var(--bg-paper);
+  color: var(--text-primary);
+}
+
+.sidebarToggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-normal);
+}
+
+.sidebar.collapsed .sidebarToggle svg {
+  transform: rotate(180deg);
+}
+
+.sidebar.collapsed .tabButtons {
+  display: none;
+}
+
+.noteList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  transition: opacity var(--transition-fast);
+}
+
+.sidebar.collapsed .noteList {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Section */
+.section {
+  margin-bottom: 20px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.tabEmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.tabEmptyState p {
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+/* Note Card */
+.noteCard {
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  background: var(--bg-paper);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  animation: fadeInUp 300ms ease-out forwards;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.noteCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow);
+  border-color: var(--border);
+}
+
+.noteCard.selected {
+  border-left: 3px solid var(--accent);
+  background: var(--highlight);
+}
+
+.noteCardIcon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.noteCardContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.noteCardTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 24px;
+}
+
+.noteCardMeta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.noteCardMeta svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.6;
+}
+
+.noteCardDelete {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+
+.noteCard:hover .noteCardDelete {
+  opacity: 1;
+}
+
+.noteCardDelete:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.noteCardDelete svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  flex: 1;
+}
+
+.emptyIcon {
+  width: 64px;
+  height: 64px;
+  color: var(--border);
+  margin-bottom: 20px;
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.emptyDesc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  margin-bottom: 24px;
+}
+
+.emptyBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.emptyBtn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.emptyBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.emptyBtnGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 180px;
+}
+
+.emptyBtnSecondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--bg-paper);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.emptyBtnSecondary:hover {
+  background: var(--highlight);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.emptyBtnSecondary svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Stagger animation for note cards */
+.noteCard:nth-child(1) { animation-delay: 0ms; }
+.noteCard:nth-child(2) { animation-delay: 50ms; }
+.noteCard:nth-child(3) { animation-delay: 100ms; }
+.noteCard:nth-child(4) { animation-delay: 150ms; }
+.noteCard:nth-child(5) { animation-delay: 200ms; }
+.noteCard:nth-child(6) { animation-delay: 250ms; }
+.noteCard:nth-child(7) { animation-delay: 300ms; }
+.noteCard:nth-child(8) { animation-delay: 350ms; }
+
+/* Mobile Toggle */
+.mobileToggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: var(--topbar-height);
+    bottom: 0;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform var(--transition-slow);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px var(--shadow);
+  }
+
+  .mobileToggle {
+    display: flex;
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 60;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(196, 120, 90, 0.35);
+  }
+
+  .mobileToggle svg {
+    width: 24px;
+    height: 24px;
+  }
+}

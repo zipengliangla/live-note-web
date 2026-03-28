@@ -1,0 +1,347 @@
+.toggleBtn {
+  position: fixed;
+  right: 16px;
+  top: 80px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 40;
+}
+
+.toggleBtn:hover {
+  background: var(--bg-paper);
+  color: var(--text-primary);
+}
+
+.toggleBtn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.toggleIcon {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-normal);
+}
+
+.panel.collapsed .toggleIcon {
+  transform: rotate(180deg);
+}
+
+.panel {
+  width: 280px;
+  background: var(--bg-sidebar);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width var(--transition-slow), opacity var(--transition-fast);
+  overflow: hidden;
+}
+
+.panel.collapsed {
+  width: 0;
+  opacity: 0;
+  border-left: none;
+}
+
+.header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 57px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.title svg {
+  opacity: 0.6;
+}
+
+.collapseBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.collapseBtn:hover {
+  background: var(--bg-paper);
+  color: var(--text-primary);
+}
+
+.collapseBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.calendar {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.navBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.navBtn:hover {
+  background: var(--bg-paper);
+  color: var(--text-primary);
+}
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.selectGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.yearSelect,
+.monthSelect {
+  padding: 6px 10px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: var(--bg-paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.yearSelect:hover,
+.monthSelect:hover {
+  border-color: var(--accent);
+}
+
+.yearSelect:focus,
+.monthSelect:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(196, 120, 90, 0.2);
+}
+
+.todayBtn {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.todayBtn:hover {
+  background: var(--bg-paper);
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 8px 0;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.day:hover {
+  background: var(--bg-paper);
+}
+
+.day.otherMonth {
+  opacity: 0.3;
+}
+
+.day.today {
+  background: var(--accent);
+  color: white;
+}
+
+.day.today:hover {
+  background: var(--accent-hover);
+}
+
+.dayNumber {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.day.otherMonth .dayNumber {
+  color: var(--text-secondary);
+}
+
+.day.today .dayNumber {
+  color: white;
+  font-weight: 600;
+}
+
+.dots {
+  display: flex;
+  gap: 3px;
+  position: absolute;
+  bottom: 4px;
+}
+
+.dotNote,
+.dotTodo {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.dotNote {
+  background: var(--accent);
+}
+
+.dotTodo {
+  background: #5A8F5A;
+}
+
+.day.today .dotNote {
+  background: white;
+}
+
+.day.today .dotTodo {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legendNote {
+  background: var(--accent);
+}
+
+.legendTodo {
+  background: #5A8F5A;
+}
+
+@media (max-width: 1024px) {
+  .panel {
+    position: fixed;
+    right: 0;
+    top: var(--topbar-height);
+    bottom: 0;
+    z-index: 50;
+    box-shadow: -4px 0 24px var(--shadow);
+  }
+
+  .panel.collapsed {
+    transform: translateX(100%);
+    width: 280px;
+  }
+
+  .toggleBtn {
+    right: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .panel {
+    width: 100%;
+    max-width: 320px;
+  }
+}
